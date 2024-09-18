@@ -3,7 +3,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Varela&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
-<title>Site Minimalista</title>
+<title>Restoration Calculator</title>
+<link rel="icon" type="image/x-icon" href="https://asset.brandfetch.io/idRUcHpOLl/idoBOKuc1d.png">
+
 </head>
 <body>
   <header>
@@ -25,16 +27,16 @@
   <main>
     <div class="container">
       <div class="inputs-column">
-        <h2>Calculadora de Restauração</h2>
+        <h2>Restoration Calculator</h2>
         <label for="country">Country:</label>
         <select id="country">
-          <option value="Brazil">Brasil</option>
-          <option value="Indonesia">Indonésia</option>
-          <option value="Cambodia">Cambodia</option>
+          <option value="Brazil">Brazil</option>
+          <option value="Indonesia">Indonesia</option>
+          <option value="Cambodia">Camboja</option>
         </select>
 
         <label for="total-area">Total Area (ha):</label>
-        <input type="number" id="total-area" placeholder="Insira a área total">
+        <input type="number" id="total-area" placeholder="Insert project area">
 
         <label for="previous-land-use">Previous Land Use:</label>
         <select id="previous-land-use">
@@ -72,17 +74,17 @@
         </select>
 
         <label for="labor-cost">Labor Cost (average):</label>
-        <input type="number" id="labor-cost" placeholder="Insira o custo médio de mão de obra">
+        <input type="number" id="labor-cost" placeholder="Insert labor price">
 
         <label for="discount-rate">Discount Rate:</label>
-        <input type="number" id="discount-rate" placeholder="Insira a taxa de desconto">
+        <input type="number" id="discount-rate" placeholder="Insert discount rate">
 
         <!-- Botão de Calcular -->
         <button id="calculate">Calculate</button>
       </div>
       
       <div class="results-column">
-        <h2>Resultados</h2>
+        <h2>Results</h2>
         <div id="results">
           <!-- Os resultados aparecerão aqui -->
         </div>
