@@ -1,0 +1,93 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Varela&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<title>Site Minimalista</title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="https://www.conservation-strategy.org/">
+        <img src="https://asset.brandfetch.io/idRUcHpOLl/idoBOKuc1d.png" alt="Logo da Organização" />
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#hub">HOME</a></li>
+        <li><a href="#quem-somos">CALCULATOR</a></li>
+        <li><a href="#contato">ABOUT</a></li>
+        <li><a href="#contato">TEAM</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <div class="container">
+      <div class="inputs-column">
+        <h2>Calculadora de Restauração</h2>
+        <label for="country">Country:</label>
+        <select id="country">
+          <option value="Brazil">Brasil</option>
+          <option value="Indonesia">Indonésia</option>
+          <option value="Cambodia">Cambodia</option>
+        </select>
+
+        <label for="total-area">Total Area (ha):</label>
+        <input type="number" id="total-area" placeholder="Insira a área total">
+
+        <label for="previous-land-use">Previous Land Use:</label>
+        <select id="previous-land-use">
+          <option value="Deforestation">Deforestation</option>
+          <option value="Agriculture">Agriculture</option>
+          <option value="Pasture">Pasture</option>
+          <option value="Fire">Fire</option>
+        </select>
+
+        <label for="soil-condition">Soil Condition:</label>
+        <select id="soil-condition">
+          <option value="contaminated">Contaminated</option>
+          <option value="fertile">Fertile</option>
+        </select>
+
+        <label for="restoration-method">Restoration Method:</label>
+        <select id="restoration-method">
+          <option value="Natural Regeneration">Natural Regeneration</option>
+          <option value="Assisted Natural Regeneration">Assisted Natural Regeneration</option>
+          <option value="Direct seedling">Direct seedling</option>
+          <option value="Direct Planting of Seedling">Direct Planting of Seedling</option>
+          <option value="Agroforestry">Agroforestry</option>
+        </select>
+
+        <label for="fencing">Fencing (optional):</label>
+        <select id="fencing">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+
+        <label for="pes-incentives">PES/Incentives:</label>
+        <select id="pes-incentives">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+
+        <label for="labor-cost">Labor Cost (average):</label>
+        <input type="number" id="labor-cost" placeholder="Insira o custo médio de mão de obra">
+
+        <label for="discount-rate">Discount Rate:</label>
+        <input type="number" id="discount-rate" placeholder="Insira a taxa de desconto">
+
+        <!-- Botão de Calcular -->
+        <button id="calculate">Calculate</button>
+      </div>
+      
+      <div class="results-column">
+        <h2>Resultados</h2>
+        <div id="results">
+          <!-- Os resultados aparecerão aqui -->
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
