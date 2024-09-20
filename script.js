@@ -1,41 +1,72 @@
-document.getElementById("calculate").addEventListener("click", function() {
-  const requiredFields = ["country", "total-area", "previous-land-use", "soil-condition", "restoration-method", "pes-incentives", "discount-rate"];
-  let allFilled = true;
+document.getElementById('calculate').addEventListener('click', function () {
+  // Verifica se os campos obrigatórios estão preenchidos
+  const country = document.getElementById('country').value;
+  const totalArea = document.getElementById('total-area').value;
+  const previousLandUse = document.getElementById('previous-land-use').value;
+  const soilCondition = document.getElementById('soil-condition').value;
+  const restorationMethod = document.getElementById('restoration-method').value;
+  const pesIncentives = document.getElementById('pes-incentives').value;
+  const discountRate = document.getElementById('discount-rate').value;
 
-  // Valida se todos os campos obrigatórios estão preenchidos
-  requiredFields.forEach(function(field) {
-    const input = document.getElementById(field);
-    if (!input.value) {
-      input.classList.add("error");
-      allFilled = false;
-    } else {
-      input.classList.remove("error");
+  if (!country || !totalArea || !previousLandUse || !soilCondition || !restorationMethod || !pesIncentives || !discountRate) {
+    // Adiciona a classe 'error' para os campos não preenchidos
+    document.querySelectorAll('select, input').forEach(el => {
+      if (!el.value) el.classList.add('error');
+    });
+    return;
+  } else {
+    // Remove a classe 'error' dos campos preenchidos
+    document.querySelectorAll('select, input').forEach(el => {
+      el.classList.remove('error');
+    });
+  }
+
+  // Mostra a seção de resultados
+  document.getElementById('results').style.display = 'block';
+
+  // Gráfico de Pizza (Carbon vs Agroforestry Yield)
+  const ctx = document.getElementById('myChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Carbon', 'Agroforestry Yield'],
+      datasets: [{
+        data: [50, 50],
+        backgroundColor: ['#94d2bd', '#005f73']
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
     }
   });
 
-  // Se todos os campos forem preenchidos, exibe o resultado
-  if (allFilled) {
-    document.getElementById("total-cost").textContent = "$120,000";
-
-    // Exibe a div de resultados e o gráfico
-    document.getElementById("results").style.display = "block";
-
-    // Renderiza o gráfico de pizza
-    const ctx = document.getElementById("myChart").getContext("2d");
-    new Chart(ctx, {
-      type: "pie",
-      data: {
-        labels: ["Carbon", "Agroforestry Yield"],
-        datasets: [{
-          data: [60000, 60000],  // Divide o gráfico meio a meio
-          backgroundColor: ["#34a0a4", "#1e6091"],
-        }]
+  // Gráfico de Fluxo de Caixa (Cash Flow)
+  const ctx2 = document.getElementById('cashFlowChart').getContext('2d');
+  const years = Array.from({ length: 20 }, (_, i) => i + 1);
+  const cashFlow = [-180000, ...Array(19).fill(33000)];
+  new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: years,
+      datasets: [{
+        label: 'Investment (USD)',
+        data: cashFlow,
+        backgroundColor: cashFlow.map(value => value < 0 ? '#E57373' : '#4CAF50')
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
       },
-      options: {
-        responsive: true
-      }
-    });
-  }
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
 });
+
+
 
   
