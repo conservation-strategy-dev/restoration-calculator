@@ -91,20 +91,24 @@
             <div class="results-column">
                 <h2 id="title-results">Results</h2>
                 <div id="results" style="display: none;">
-                    <h3 id="cost-label">Total Estimated Cost</h3>
-                    <p id="result-text">The total cost of restoration, calculated based on the values entered is</p>
-                    <h3><span id="total-cost">$120,000</span></h3>
-                    <h3 id="revenue-label">Project Revenue</h3>
-                    <div class="charts-container">
-                        <canvas id="myChart" width="300" height="300" style="margin-top: 60px;"></canvas>
-                        <canvas id="cashFlowChart" width="600" height="300"></canvas>
-                    </div>
-                  <div id="npv-div">
-                    <h3><span id="npv">NPV: $249,300</span></h3>
-                  </div>
+                <h3 id="cost-label">Total Estimated Cost</h3>
+                <p id="result-text">The total cost of restoration, calculated based on the values entered is</p>
+                <h3><span id="total-cost">$120,000</span></h3>
+                <div class="charts-container">
+                    <canvas id="myChart" width="300" height="300" style="margin-top: 60px;"></canvas>
+                    <canvas id="cashFlowChart" width="600" height="300"></canvas>
+                </div>
+                <div id="npv-div">
+                    <p>NPV: $249,300 </p>
+                </div>
+                <!-- Novos gráficos -->
+                <div class="charts-container">
+                    <canvas id="restorationCostsChart" width="300" height="300"></canvas>
+                    <canvas id="carbonLineChart" width="600" height="300"></canvas>
+                </div>
                 </div>          
             </div>
-        </div>
+            
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

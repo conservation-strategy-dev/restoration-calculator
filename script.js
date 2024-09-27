@@ -9,19 +9,16 @@ document.getElementById('calculate').addEventListener('click', function () {
   const discountRate = document.getElementById('discount-rate').value;
 
   if (!country || !totalArea || !previousLandUse || !soilCondition || !restorationMethod || !pesIncentives || !discountRate) {
-    // Adiciona a classe 'error' para os campos não preenchidos
     document.querySelectorAll('select, input').forEach(el => {
       if (!el.value) el.classList.add('error');
     });
     return;
   } else {
-    // Remove a classe 'error' dos campos preenchidos
     document.querySelectorAll('select, input').forEach(el => {
       el.classList.remove('error');
     });
   }
 
-  // Mostra a seção de resultados
   document.getElementById('results').style.display = 'block';
 
   // Gráfico de Pizza (Carbon vs Agroforestry Yield)
@@ -29,10 +26,10 @@ document.getElementById('calculate').addEventListener('click', function () {
   new Chart(ctx, {
     type: 'pie',
     data: {
-      labels: ['Carbon', 'Agroforestry Yield'],
+      labels: ['Carbon', 'Agroforestry Yield', 'Grant'],
       datasets: [{
-        data: [50, 50],
-        backgroundColor: ['#94d2bd', '#005f73']
+        data: [124650, 62325, 62325],
+        backgroundColor: ['#e63946', '#a8dadc', "#457b9d"]
       }]
     },
     options: {
@@ -40,6 +37,7 @@ document.getElementById('calculate').addEventListener('click', function () {
       maintainAspectRatio: false
     }
   });
+
 
   // Gráfico de Fluxo de Caixa (Cash Flow)
   const ctx2 = document.getElementById('cashFlowChart').getContext('2d');
@@ -65,6 +63,59 @@ document.getElementById('calculate').addEventListener('click', function () {
       maintainAspectRatio: false
     }
   });
+    // Gráfico de Pizza (Custos de Restauração)
+    const ctx3 = document.getElementById('restorationCostsChart').getContext('2d');
+    new Chart(ctx3, {
+      type: 'pie',
+      data: {
+        labels: ['Labor', 'Tillage', 'Seedling', 'Fence'],
+        datasets: [{
+          data: [12000, 24000, 24000, 50000],
+          backgroundColor: ['#689D69', '#77A677', '#AAAAAA', '#282828']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+  
+    // Gráfico de Linha (Evolução do Carbono Capturado)
+    const ctx4 = document.getElementById('carbonLineChart').getContext('2d');
+    const carbonYears = Array.from({ length: 30 }, (_, i) => i + 1);
+    const carbonValues = carbonYears.map(year => 315 * (1 - Math.exp(-0.1 * year))); // Crescimento logarítmico
+    new Chart(ctx4, {
+      type: 'line',
+      data: {
+        labels: carbonYears,
+        datasets: [{
+          label: 'Carbon Sequestration (tCO2/ha)',
+          data: carbonValues,
+          borderColor: '#4CAF50',
+          fill: false,
+          tension: 0.1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'tCO2/ha'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Years'
+            }
+          }
+        }
+      }
+    });
 });
 
 
